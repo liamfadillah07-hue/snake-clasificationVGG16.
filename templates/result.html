@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Hasil Prediksi &mdash; SnakeSense AI{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <h2 class="text-center fw-bold mb-4" style="color:#1b4332;">Hasil Analisis</h2>
+
+        <div class="card shadow-sm border-0">
+            <img src="{{ image_path }}" class="card-img-top" alt="Gambar ular yang diunggah" style="max-height:400px; object-fit:cover;">
+            <div class="card-body text-center">
+                {% if label == "Berbisa" %}
+                    <span class="badge bg-danger fs-5 px-3 py-2 mb-3">
+                        <i class="fa-solid fa-skull-crossbones"></i> {{ label }}
+                    </span>
+                {% else %}
+                    <span class="badge bg-success fs-5 px-3 py-2 mb-3">
+                        <i class="fa-solid fa-leaf"></i> {{ label }}
+                    </span>
+                {% endif %}
+                <p class="fs-5">Tingkat keyakinan model: <strong>{{ confidence }}%</strong></p>
+                <div class="progress mb-4" style="height: 12px;">
+                    <div class="progress-bar {% if label == 'Berbisa' %}bg-danger{% else %}bg-success{% endif %}"
+                         role="progressbar" style="width: {{ confidence }}%;"></div>
+                </div>
+                <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-rotate-left"></i> Coba Gambar Lain
+                </a>
+            </div>
+        </div>
+
+        <div class="alert alert-danger mt-4">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Hasil ini dihasilkan oleh model AI dan dapat keliru. Jangan gunakan sebagai
+            satu-satunya dasar untuk berinteraksi dengan ular di kehidupan nyata.
+        </div>
+    </div>
+</div>
+{% endblock %}

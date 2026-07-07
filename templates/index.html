@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Beranda &mdash; SnakeSense AI{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="text-center mb-4">
+            <h1 class="fw-bold" style="color:#1b4332;">Deteksi Ular Berbisa atau Tidak</h1>
+            <p class="text-muted">
+                Unggah foto ular, dan sistem akan memprediksi apakah ular tersebut
+                <strong>berbisa</strong> atau <strong>tidak berbisa</strong> menggunakan
+                model Transfer Learning VGG16.
+            </p>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="file" class="form-label fw-semibold">Pilih Gambar Ular</label>
+                        <input class="form-control" type="file" id="file" name="file" accept=".png,.jpg,.jpeg" required>
+                        <div class="form-text">Format yang didukung: JPG, JPEG, PNG (maks. 8MB).</div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-lg text-white" style="background-color:#2d6a4f;">
+                            <i class="fa-solid fa-magnifying-glass"></i> Analisis Gambar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="alert alert-danger mt-4">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <strong>Peringatan:</strong> Hasil prediksi AI ini bersifat pendukung keputusan,
+            bukan pengganti identifikasi ahli herpetologi. Jangan mendekati atau menangani
+            ular liar berdasarkan hasil aplikasi ini semata.
+        </div>
+    </div>
+</div>
+{% endblock %}

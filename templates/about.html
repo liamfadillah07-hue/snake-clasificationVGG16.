@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Tentang &mdash; SnakeSense AI{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <h2 class="fw-bold mb-3" style="color:#1b4332;">Tentang Aplikasi</h2>
+        <p>
+            <strong>SnakeSense AI</strong> adalah aplikasi web yang dibangun sebagai bagian dari
+            Tugas 11: Transfer Learning VGG16. Aplikasi ini menggunakan model
+            Convolutional Neural Network VGG16 yang telah dilatih ulang (fine-tuning)
+            untuk mengklasifikasikan gambar ular ke dalam dua kategori:
+        </p>
+        <ul>
+            <li><strong>Berbisa (Venomous)</strong></li>
+            <li><strong>Tidak Berbisa (Non-Venomous)</strong></li>
+        </ul>
+        <p>
+            Model dibangun menggunakan pendekatan transfer learning: bagian convolutional
+            VGG16 yang telah dilatih pada dataset ImageNet digunakan sebagai ekstraktor fitur,
+            kemudian ditambahkan lapisan klasifikasi baru serta dilakukan fine-tuning pada
+            blok konvolusi terakhir agar model lebih sesuai dengan karakteristik visual ular.
+        </p>
+        <h5 class="fw-bold mt-4">Teknologi yang Digunakan</h5>
+        <ul>
+            <li>Python, TensorFlow &amp; Keras</li>
+            <li>Flask (backend web)</li>
+            <li>Bootstrap 5 (tampilan antarmuka)</li>
+        </ul>
+        <h5 class="fw-bold mt-4">Disclaimer</h5>
+        <p class="text-danger">
+            Aplikasi ini dibuat untuk tujuan edukasi/tugas kuliah. Akurasi model bergantung
+            pada kualitas dan jumlah data latih. Jangan gunakan hasil prediksi sebagai
+            satu-satunya acuan keselamatan saat berhadapan dengan ular sungguhan.
+        </p>
+    </div>
+</div>
+{% endblock %}
